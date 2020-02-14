@@ -11,7 +11,7 @@ import org.json.simple.parser.*;
 // You MUST declare the CLASSPATH variable to both this src folder and what ever folder 
 // your jars/other dependencies are. If you dont then this program WILL NOT WORK
 
-public class weatherDataTester {
+public class WeatherDataTester {
 
     private static final String darkSkyUrl = "https://api.darksky.net/forecast/";
 
@@ -28,14 +28,16 @@ public class weatherDataTester {
         //System.out.println(jsonForecast);
         Object data = jsonForecast.get("currently");
         JSONObject tmp = (JSONObject) data;
-        Object summary  = (String) tmp.get("summary");
-        Object windGust  =  tmp.get("windGust");
-        Object temperature  =  tmp.get("temperature");
-        //Object summary  = (String) tmp.get("summary");
-        System.out.println(summary.getClass().getName());
-
+        String summary  = (String) tmp.get("summary");
+        Double windGust  =  (Double) tmp.get("windGust");
+        Double temperature  =  (Double) tmp.get("temperature");
+        //System.out.println(summary.getClass().getName());
+        System.out.println("It currenetly is: " +summary);
+        System.out.println("It current wind gust is: " +windGust.toString());
+        System.out.println("The current temperature is: " +temperature.toString());
+        
         TopLevelWindow window = new TopLevelWindow();
-        window.createWindow();
+        window.createWindow(summary, windGust, temperature);
     
 
 
