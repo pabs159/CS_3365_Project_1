@@ -5,13 +5,13 @@ import javax.swing.*;
 
 //Create a simple GUI window
 public class TopLevelWindow {
-    
-    public static void addComponentsToPane(Container pane) {
+   
+    public static void addComponentsToPane(String Summary, Double WindGust, Double Temp, Container pane) {
         pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
  
-        addText("Currrent Conditions", pane);
-        addText("Temperature", pane);
-        addText("Text", pane);
+        addText("Currrent Conditions: "+Summary, pane);
+        addText("Temperature: "+Temp + " F", pane); 
+        addText("Wind Gust: "+WindGust +" MPH", pane);
 
     }
  
@@ -22,8 +22,8 @@ public class TopLevelWindow {
     }
 
 
-    public static void createWindow() {
-
+    public static void createWindow(String Summary, Double WindGust, Double Temp) {
+        
         JFrame frame = new JFrame("Widget GUI");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setPreferredSize(new Dimension(400, 300));
@@ -34,7 +34,8 @@ public class TopLevelWindow {
         
         //frame.getContentPane().setLayout(new FlowLayout());
         
-        addComponentsToPane(frame.getContentPane());
+        addComponentsToPane(Summary, WindGust, Temp, frame.getContentPane());
+
         
         frame.setLocationRelativeTo(null);
         frame.pack();
